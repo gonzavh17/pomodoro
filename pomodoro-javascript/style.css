@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.body {
+    position: relative;
+    background-color: #525E75;
+    min-height: 100vh;
+}
+
+.nav-bar {
+    padding: 2rem;
+}
+
+.section {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    color: #F1DDBF;
+}
+
+.timer__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #F1DDBF;
+}
+
+.timer__container--minutos {
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.timer__container--segundos {
+    padding: 1rem;
+    font-size: 2rem;
+}

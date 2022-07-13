@@ -22,21 +22,41 @@ function saveTask(save) {
     if (localStorage.getItem(`tasks`) === null) {
         let tasks = [];
         tasks.push(task);
-        localStorage.setItem(`tasks`, JSON.stringify(tasks))
+        localStorage.setItem(`tasks`, JSON.stringify(tasks));
     } else {
-        let tasks = JSON.parse(localStorage.getItem(`tasks`))
+        let tasks = JSON.parse(localStorage.getItem(`tasks`));
         tasks.push(task);
-        localStorage.setItem(`tasks`, JSON.stringify(tasks))
+        localStorage.setItem(`tasks`, JSON.stringify(tasks));
     }
 
+    getTasks();
     save.preventDefault();
 }
 
 // Agregando las tareas al DOM
 
-function getTask() {
+function getTasks() {
     let tasks = JSON.parse(localStorage.getItem(`tasks`));
     let mostrarTasks = document.getElementById(`tasks`);
 
-    let
+    mostrarTasks.innerHTML = " ";
+
+    for (let i = 0; i < tasks.length; i++) {
+        let title = tasks[i].title;
+        let description = tasks[i].description;
+
+        mostrarTasks.innerHTML += `<div>
+                    <div>
+                        <p>${title} - ${description}</p>
+
+                       
+                       <input type="button" value="Delete" onclick="deleteTask("${title}")">
+                    </div>   
+                </div>`;
+    }
 }
+
+// funcion para eliminar tareas
+
+
+getTasks();
