@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/jam-icons/css/jam.min.css">
+    <title>Pomodoro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,9 +23,25 @@
     <main>
         <section class="section">
             <h1 class="titulo">Pomodoro timer</h1>
-            <div class="timer__container">
+            <div class="container">
+                <div>
+                    <button class="pomodoro">Pomodoro</button>
+                    <button class="short-break">Short Break</button>
+                    <button class="long-break">Long Break</button>
+                </div>
 
+                <div class="timer">
+                    <input class="number" type="text" maxlength="2" value="25">
+                    <span>:</span>
+                    <input class="number" type="text" maxlength="2" value="00">
+                </div>
+                <div class="buttons">
+                    <button class="buttons-start" id="play" onclick="starTimer()"><span class="jam jam-play"></span></button>
+                    <button class="buttons-start" id="stop" onclick="stopTimer()"><span class="jam jam-pause"></span></button>
+                </div>
             </div>
+
+
 
             <div>
                 <form id="form">

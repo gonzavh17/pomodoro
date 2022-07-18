@@ -2,13 +2,72 @@
 
 // Agregando el timer
 
-const timer = document.querySelector(".timer__container");
+let repeater, timer, inputs, seconds, minutes, alarm;
 
-timer.innerHTML = `<div class="timer__container--minutos">00</div><div class="timer__container--segundos">00</div>`;
+window.addEventListener(`load`, () => {
+    inputs = Array.from(document.getElementsByClassName(`number`));
+    timer = document.querySelector(`.timer`);
+    alarm = new Audio(`sound/short-alarm-clock-sound.mp3`);
+});
 
-document.getElementById(`form`).addEventListener("submit", saveTask);
+function starTimer() {
+    parseTime();
+    setTimer();
+    countDown();
+}
+
+function parseTime() {
+    minutes = Number(inputs[0].value);
+    seconds = Number(inputs[1].value);
+
+}
+
+function setTimer() {
+    timer.innerHTML = `<p class="number">${
+    minutes > 9 ? minutes : "0" + minutes
+  }</p><span>:</span><p class="number">${
+    seconds > 9 ? seconds : "0" + seconds
+  }</p>`;
+
+    document.title = `${minutes > 9 ? minutes : "0" + minutes}:${
+    seconds > 9 ? seconds : "0" + seconds
+  }`;
+}
+
+function countDown() {
+    repeater = setInterval(runner, 1000);
+}
+
+function runner() {
+    if (seconds > 0) {
+        seconds--;
+    } else {
+        if (minutes > 0) {
+            seconds = 59;
+            minutes--;
+        } else {
+            alarm.play();
+        }
+    }
+
+    setTimer();
+}
+
+let pomodoro, shortBreak, longBreak;
+
+
+
+pomodoro = document.getElementsByClassName(`pomodoro`);
+shortBreak = document.getElementsByClassName(`short-break`);
+longBreak = document.getElementsByClassName(`long-break`);
+
+console.log(pomodoro)
+
+
 
 // Creando funcion para guardar tareas dentro del local storage
+
+document.getElementById(`form`).addEventListener("submit", saveTask);
 
 function saveTask(save) {
     let title = document.getElementById(`title`).value;
@@ -33,6 +92,10 @@ function saveTask(save) {
     save.preventDefault();
 }
 
+function stopTimer() {
+    location.reload();
+}
+
 // Agregando las tareas al DOM
 
 function getTasks() {
@@ -48,15 +111,18 @@ function getTasks() {
         mostrarTasks.innerHTML += `<div>
                     <div>
                         <p>${title} - ${description}</p>
-
                        
-                       <input type="button" value="Delete" onclick="deleteTask("${title}")">
+                       <a onclick="deleteTask("${title}")">Delete</a>
                     </div>   
                 </div>`;
     }
 }
 
-// funcion para eliminar tareas
+function deleteTask(title) {
+    clearInterval(repeater);
+    console.log(title);
+}
 
+// funcion para eliminar tareas
 
 getTasks();
