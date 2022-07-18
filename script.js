@@ -20,6 +20,7 @@ function parseTime() {
     minutes = Number(inputs[0].value);
     seconds = Number(inputs[1].value);
 
+    // minutes = 23;
 }
 
 function setTimer() {
@@ -53,15 +54,19 @@ function runner() {
     setTimer();
 }
 
+function stopTimer() {
+    location.reload();
+}
+
 let pomodoro, shortBreak, longBreak;
 
-
+// Creacion de pomodor, short break y long break
 
 pomodoro = document.getElementsByClassName(`pomodoro`);
 shortBreak = document.getElementsByClassName(`short-break`);
 longBreak = document.getElementsByClassName(`long-break`);
 
-console.log(pomodoro)
+// console.log(pomodoro)
 
 
 
@@ -73,7 +78,7 @@ function saveTask(save) {
     let title = document.getElementById(`title`).value;
     let description = document.getElementById(`description`).value;
 
-    const task = {
+    let task = {
         title: title,
         description: description,
     };
@@ -89,20 +94,24 @@ function saveTask(save) {
     }
 
     getTasks();
+    // document.getElementById('formTask').reset();
     save.preventDefault();
 }
 
-function stopTimer() {
-    location.reload();
-}
+
 
 // Agregando las tareas al DOM
+
+function deleteTask(title) {
+    console.log(title);
+}
+
 
 function getTasks() {
     let tasks = JSON.parse(localStorage.getItem(`tasks`));
     let mostrarTasks = document.getElementById(`tasks`);
 
-    mostrarTasks.innerHTML = " ";
+    mostrarTasks.innerHTML = ``;
 
     for (let i = 0; i < tasks.length; i++) {
         let title = tasks[i].title;
@@ -112,16 +121,13 @@ function getTasks() {
                     <div>
                         <p>${title} - ${description}</p>
                        
-                       <a onclick="deleteTask("${title}")">Delete</a>
+                       <a href="#" onclick="deleteTask("${title}")">Delete</a>
                     </div>   
                 </div>`;
     }
 }
 
-function deleteTask(title) {
-    clearInterval(repeater);
-    console.log(title);
-}
+
 
 // funcion para eliminar tareas
 

@@ -23,6 +23,8 @@
 .timer {
     font-size: 30px;
     color: #87805E;
+    display: flex;
+    align-items: center;
 }
 
 .number {
@@ -39,7 +41,7 @@
     border: none;
     background-color: transparent;
     font-size: 2rem;
-    margin-right: 30px;
+    padding: 5px;
     color: #87805E;
     cursor: pointer;
     transition: 500ms;
