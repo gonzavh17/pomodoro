@@ -4,11 +4,19 @@
 
 let repeater, timer, inputs, seconds, minutes, alarm;
 
+let pomodoro, shortBreak, longBreak;
 window.addEventListener(`load`, () => {
     inputs = Array.from(document.getElementsByClassName(`number`));
     timer = document.querySelector(`.timer`);
     alarm = new Audio(`sound/short-alarm-clock-sound.mp3`);
 });
+
+
+
+
+
+
+
 
 function starTimer() {
     parseTime();
@@ -20,7 +28,8 @@ function parseTime() {
     minutes = Number(inputs[0].value);
     seconds = Number(inputs[1].value);
 
-    // minutes = 23;
+
+
 }
 
 function setTimer() {
@@ -48,6 +57,9 @@ function runner() {
             minutes--;
         } else {
             alarm.play();
+            finishAlert()
+
+
         }
     }
 
@@ -55,10 +67,20 @@ function runner() {
 }
 
 function stopTimer() {
-    location.reload();
+    location.reload()
 }
 
-let pomodoro, shortBreak, longBreak;
+
+function finishAlert() {
+    swal({
+        title: "¡Buen trabajo!",
+        text: "Terminaste un pomodoro",
+        icon: "success",
+        button: "Continuar",
+    }).then((result) => {
+        stopTimer()
+    });
+}
 
 // Creacion de pomodor, short break y long break
 

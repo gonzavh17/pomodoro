@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/jam-icons/css/jam.min.css">
     <title>Pomodoro</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="body">
@@ -31,9 +32,9 @@
                 </div>
 
                 <div class="timer">
-                    <input class="number" type="text" maxlength="2" value="25">
-                    <span>:</span>
                     <input class="number" type="text" maxlength="2" value="00">
+                    <span>:</span>
+                    <input class="number" type="text" maxlength="2" value="01">
                 </div>
                 <div class="buttons">
                     <button class="buttons-start" id="play" onclick="starTimer()"><span class="jam jam-play"></span></button>
