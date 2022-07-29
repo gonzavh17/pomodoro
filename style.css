@@ -92,5 +92,7 @@
 }
 
 .button-frase-container {
-    margin-top: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
 }
