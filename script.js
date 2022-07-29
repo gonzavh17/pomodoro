@@ -11,13 +11,6 @@ window.addEventListener(`load`, () => {
     alarm = new Audio(`sound/short-alarm-clock-sound.mp3`);
 });
 
-
-
-
-
-
-
-
 function starTimer() {
     parseTime();
     setTimer();
@@ -27,9 +20,6 @@ function starTimer() {
 function parseTime() {
     minutes = Number(inputs[0].value);
     seconds = Number(inputs[1].value);
-
-
-
 }
 
 function setTimer() {
@@ -57,9 +47,7 @@ function runner() {
             minutes--;
         } else {
             alarm.play();
-            finishAlert()
-
-
+            finishAlert();
         }
     }
 
@@ -67,9 +55,8 @@ function runner() {
 }
 
 function stopTimer() {
-    location.reload()
+    location.reload();
 }
-
 
 function finishAlert() {
     swal({
@@ -77,80 +64,125 @@ function finishAlert() {
         text: "Terminaste un pomodoro",
         icon: "success",
         button: "Continuar",
-    }).then((result) => {
-        stopTimer()
+    }).then(() => {
+        stopTimer();
     });
 }
 
-// Creacion de pomodor, short break y long break
 
-pomodoro = document.getElementsByClassName(`pomodoro`);
-shortBreak = document.getElementsByClassName(`short-break`);
-longBreak = document.getElementsByClassName(`long-break`);
+// Introduciendo apis y generador de frase
 
-// console.log(pomodoro)
+const frase = document.querySelector("#frase")
+const autor = document.querySelector("#autor")
+const buttonNuevaFrase = document.querySelector("#button-nueva-frase")
 
+
+buttonNuevaFrase.addEventListener("click", getFrase)
+
+function getFrase() {
+
+    let num = parseInt(Math.random() * 10);
+    console.log(num)
+
+    fetch("frases.json")
+        .then((response) => response.json())
+        .then((data) => {
+            if (num === 0) {
+                frase.innerHTML = `"${data[0].frase}"`;
+                autor.innerHTML = `-${data[0].autor}`;
+            } else if (num === 1) {
+                frase.innerHTML = `"${data[1].frase}"`;
+                autor.innerHTML = `-${data[1].autor}`;
+            } else if (num === 2) {
+                frase.innerHTML = `"${data[2].frase}"`;
+                autor.innerHTML = `-${data[2].autor}`;
+            } else if (num === 3) {
+                4
+                frase.innerHTML = `"${data[3].frase}"`;
+                autor.innerHTML = `-${data[3].autor}`;
+            } else if (num === 4) {
+                5
+                frase.innerHTML = `"${data[4].frase}"`;
+                autor.innerHTML = `-${data[4].autor}`;
+            } else if (num === 5) {
+                frase.innerHTML = `"${data[5].frase}"`;
+                67
+                autor.innerHTML = `-${data[5].autor}`;
+            } else if (num === 6) {
+                frase.innerHTML = `"${data[6].frase}"`;
+                autor.innerHTML = `-${data[6].autor}`;
+            } else if (num === 7) {
+                frase.innerHTML = `"${data[7].frase}"`;
+                autor.innerHTML = `-${data[7].autor}`;
+            } else if (num === 8) {
+                frase.innerHTML = `"${data[8].frase}"`;
+                autor.innerHTML = `-${data[8].autor}`;
+            } else if (num === 9) {
+                frase.innerHTML = `"${data[9].frase}"`;
+                autor.innerHTML = `-${data[9].autor}`;
+            }
+        });
+}
 
 
 // Creando funcion para guardar tareas dentro del local storage
 
-document.getElementById(`form`).addEventListener("submit", saveTask);
+document.getElementById("formTask").addEventListener("submit", saveTask);
 
-function saveTask(save) {
-    let title = document.getElementById(`title`).value;
-    let description = document.getElementById(`description`).value;
+function saveTask(e) {
+    let title = document.getElementById("title").value;
+    let description = document.getElementById("description").value;
+    console.log(description);
 
     let task = {
-        title: title,
-        description: description,
+        title,
+        description,
     };
 
-    if (localStorage.getItem(`tasks`) === null) {
+    if (localStorage.getItem("tasks") === null) {
         let tasks = [];
         tasks.push(task);
-        localStorage.setItem(`tasks`, JSON.stringify(tasks));
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     } else {
-        let tasks = JSON.parse(localStorage.getItem(`tasks`));
+        let tasks = JSON.parse(localStorage.getItem("tasks"));
         tasks.push(task);
-        localStorage.setItem(`tasks`, JSON.stringify(tasks));
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
     getTasks();
-    // document.getElementById('formTask').reset();
-    save.preventDefault();
+    document.getElementById("formTask").reset();
+    e.preventDefault();
 }
-
-
-
-// Agregando las tareas al DOM
 
 function deleteTask(title) {
     console.log(title);
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].title == title) {
+            tasks.splice(i, 1);
+        }
+    }
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    getTasks();
 }
 
-
 function getTasks() {
-    let tasks = JSON.parse(localStorage.getItem(`tasks`));
-    let mostrarTasks = document.getElementById(`tasks`);
-
-    mostrarTasks.innerHTML = ``;
-
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let tasksView = document.getElementById("tasks");
+    tasksView.innerHTML = "";
     for (let i = 0; i < tasks.length; i++) {
         let title = tasks[i].title;
         let description = tasks[i].description;
 
-        mostrarTasks.innerHTML += `<div>
-                    <div>
-                        <p>${title} - ${description}</p>
-                       
-                       <a href="#" onclick="deleteTask("${title}")">Delete</a>
-                    </div>   
-                </div>`;
+        tasksView.innerHTML += `<div class="card mb-3">
+        <div class="card-body">
+          <p>${title} - ${description}
+          <a href="#" onclick="deleteTask('${title}')" class="btn btn-danger ml-5">Delete</a>
+          </p>
+        </div>
+      </div>`;
     }
 }
-
-
-
-// funcion para eliminar tareas
 
 getTasks();

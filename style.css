@@ -85,3 +85,12 @@
     padding: 1rem;
     font-size: 2rem;
 }
+
+.frases-container {
+    padding: 50px;
+    border: 1px solid #000;
+}
+
+.button-frase-container {
+    margin-top: 10px;
+}
