@@ -9,7 +9,7 @@
 
 .body {
     position: relative;
-    background-color: #D8CCA3;
+    background-image: url(imagenes/background.Webp);
     min-height: 100vh;
 }
 
@@ -29,7 +29,7 @@
 
 .number {
     display: inline-block;
-    width: 180px;
+    width: 200px;
     font-size: 128px;
     text-align: center;
     border: none;
@@ -54,8 +54,17 @@
     border-radius: 50%;
 } */
 
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.nav-items {
+    display: flex;
+}
+
 .nav-bar {
-    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: #D8CCA3 !important;
 }
 
 .section {
@@ -95,4 +104,39 @@
     margin: 10px;
     display: flex;
     justify-content: center;
+}
+
+.spotify {
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 5px 0 5px 0;
+}
+
+.section1 {
+    position: fixed;
+    margin-left: 10px;
+}
+
+.btn-timer {
+    background-color: #D8CCA3;
+}
+
+.btn-timer:hover {
+    background-color: #87805E;
+    border: none;
+}
+
+.timer-container {
+    margin-bottom: 10px;
+    background-color: #EDDFB3;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+}
+
+.card-container {
+    background-color: #EDDFB3;
 }
