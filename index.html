@@ -17,10 +17,9 @@
 
 <body class="body">
     <header>
-
         <nav class="navbar navbar-expand-lg bg-light nav-bar">
             <div class="container-fluid nav-bar-container">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">Pomodoro</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -42,16 +41,10 @@
                 </div>
             </div>
         </nav>
-
     </header>
-
     <main>
-
         <section>
-
-
-            <div class="section1">
-
+            <div class="section-spotify">
                 <div class="card text-center card-container">
                     <div class="spotify-container">
                         <div class="spotify">
@@ -60,11 +53,9 @@
                     </div>
                     <div class="card-footer">Music to relax</div>
                 </div>
-
-
             </div>
         </section>
-        <section class="section">
+        <section class="section" id="sec1">
             <div class="card text-center timer-container">
                 <div class="card-header">
                     <h1 class="titulo">Pomodoro timer</h1>
@@ -73,11 +64,14 @@
                     <div class="row">
                         <div class="col">
                             <div class="timer">
-                                <input class="number" type="text" maxlength="2" value="00">
+                                <input class="number" type="text" maxlength="2">
                                 <span>:</span>
-                                <input class="number" type="text" maxlength="2" value="01">
+                                <input class="number" type="text" maxlength="2">
+
+
                             </div>
                         </div>
+
                         <div class="col buttons-container">
                             <div class="buttons">
                                 <button class="buttons-start" id="play" onclick="starTimer()"><span class="jam jam-play"></span></button>
@@ -85,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="buttons">
                             <a href="#" class="btn btn-timer">Pomodoro</a>
@@ -92,12 +87,8 @@
                             <a href="#" class="btn btn-timer">long Break</a>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
+
                 <div class="card-footer text-muted">
                     2 days ago
                 </div>
@@ -106,25 +97,25 @@
 
 
 
-            <div>
-                <form id="formTask">
-                    <div class="form-group">
-                        <input type="text" id="title" placeholder="Add A Todo">
-                        <input type="text" id="description" placeholder="Add A Todo"></input>
-                    </div>
-                    <button type="submit" class="btn">Save</button>
-                </form>
+            <div class="lista-tareas">
+                <div class="inputs-container">
+                    <form id="formTask" class="form">
+                        <div class="form-group">
+                            <input class="input-tareas" type="text" id="title" placeholder="Titulo">
+                            <input class="input-tareas" type="text" id="description" placeholder="Descripcion"></input>
+                        </div>
+                        <button type="submit" class="btn"><span class="btn-add-task jam jam-plus-rectangle"></span></button>
+                    </form>
+                </div>
+
+                <div>
+                    <div id="tasks"></div>
+                </div>
+
             </div>
 
             <div>
-                <div id="tasks"></div>
-            </div>
-
-
-
-
-            <div>
-                <div class="frases-container ">
+                <div class="frases-container">
                     <p id="frase">"Con autodisciplina casi todo es posible"</p>
                     <p id="autor">-Theodore Roosevelt</p>
                 </div>
@@ -133,19 +124,66 @@
                 </div>
             </div>
 
-
-
-
-
+            <a href="#sec2">Mas info</a>
         </section>
 
+        <section class="section-pomodoro" id="sec2">
+            <div class="information-container">
+                <h4>¿Que es la tecnica Pomodoro?</h4>
+                <p class="information-p">La técnica pomodoro es un método dedicado a la optimización del tiempo utilizado para realizar cierta actividad. Fue creado a fines de la década de 1980 por Francesco Cirillo. Se basa en un temporizador para dividir el tiempo en intervalos
+                    fijos llamados pomodoros de 25 minutos de actividad, seguidos de 5 minutos de descanso (short break), con pausas largas cada cuatro intervalos de pomodoros (Long break).
+                </p>
 
+                <h4 class="">¿Con que cuenta este sitio web?</h4>
+                <p class="information-p">Este sitio web cuenta con el temporizador pomodoro para que usted decida qué actividad va a realizar en el tiempo propuesto. Además de esto cuenta con un administrador de tareas a modo de lista para que agregue las actividades que desea
+                    hacer en el tiempo dispuesto, para lograr una optimización aún mayor de su tiempo. También cuenta con una playlist de spotify adherida al sitio la cual tiene música relajante para que ayude a su concentración durante el tiempo de pomodoro.
+                </p>
+                <h4 class="">¿Como utilizarlo?</h4>
+                <p class="information-p">
+                    <ol>
+                        <li class="listado-pomodoro">Decidir la tarea o actividad a realizar.</li>
+                        <li class="listado-pomodoro">Agregar dicha tarea a la lista de tareas integrada.</li>
+                        <li class="listado-pomodoro">Poner el temporizador.</li>
+                        <li class="listado-pomodoro">Trabajr en la tarea hasta que el contador suene.</li>
+                        <li class="listado-pomodoro">Tomar la pausa del short break.</li>
+                        <li class="listado-pomodoro">Cada cuatro pomodoros, se implementa el long break, una pausa de mas minutos.</li>
+                        <li class="listado-pomodoro">Repetir los pasos.</li>
+                    </ol>
+                </p>
+                <h4 class="">Información adicional</h4>
+                <p class="information-p">El método se basa en la idea de que las pausas regulares pueden mejorar la agilidad mental, y nos motiva a ofrecer una respuesta eficiente frente al tiempo, en lugar del estado de ansiedad que suele provocar el no tener un tiempo predispuesto
+                    para alguna actividad. Además, al prevenir la multitarea, ayuda a alcanzar un estado de foco más elevado, que se hace sostenible gracias a las pausas regulares.
+                </p>
+            </div>
+        </section>
 
 
     </main>
 
-    <footer>
+    <footer class="footer">
+        <ul class="footer-item-container">
+            <a href="#sec1" class="footer-a">
+                <li class="footer-item">HOME</li>
+            </a>
+            <a href="#" class="footer-a">
+                <li class="footer-item">CONTACT</li>
+            </a>
+            <a href="#" class="footer-a">
+                <li class="footer-item">ABOUT US</li>
+            </a>
+        </ul>
 
+        <div class="footer-icons-container">
+            <a href="#" class="footer-a"><span class="jam jam-instagram footer-icons"></span></a>
+            <a href="#" class="footer-a"><span class="jam jam-facebook footer-icons"></span></a>
+            <a href="#" class="footer-a"><span class="jam jam-youtube footer-icons"></span></a>
+        </div>
+
+        <div class="personal-information-container">
+            <p class="personal-information">made by <a href="#" class="personal-information-name">Gonzalo Asis.</a>
+            </p>
+            <p class="personal-information">@pomodoro 2022. All Right Reserved.</p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

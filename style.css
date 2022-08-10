@@ -10,7 +10,20 @@
 .body {
     position: relative;
     background-image: url(imagenes/background.Webp);
-    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
 }
 
 .container {
@@ -48,12 +61,6 @@
     border-radius: 50%;
 }
 
-
-/* .buttons-start:hover {
-    background-color: #fff;
-    border-radius: 50%;
-} */
-
 .navbar-collapse {
     flex-grow: 0;
 }
@@ -63,14 +70,15 @@
 }
 
 .nav-bar {
-    margin-bottom: 2rem;
     background-color: #D8CCA3 !important;
 }
 
 .section {
+    margin-top: 2rem;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    min-height: 100vh;
 }
 
 .titulo {
@@ -113,9 +121,9 @@
     padding: 5px 0 5px 0;
 }
 
-.section1 {
-    position: fixed;
+.section-spotify {
     margin-left: 10px;
+    position: relative;
 }
 
 .btn-timer {
@@ -139,4 +147,132 @@
 
 .card-container {
     background-color: #EDDFB3;
+    position: absolute;
+}
+
+.section-pomodoro {
+    background-color: #D8CCA3;
+    z-index: 20;
+    min-height: 100vh;
+    background-image: url(imagenes/background-section.WebP);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.information-container {
+    width: 650px;
+    margin-top: 30px;
+}
+
+.h2-name {
+    padding: 10px;
+}
+
+.lista-tareas {
+    border-radius: 5px;
+    background-color: #EDDFB3;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    overflow: scroll;
+    width: 500px;
+    padding: 20px;
+    align-items: center;
+}
+
+.lista-tareas::-webkit-scrollbar {
+    width: 7px;
+}
+
+.lista-tareas::-webkit-scrollbar-thumb {
+    background: #D8CCA3;
+    border-radius: 5px;
+}
+
+.form {
+    background-color: #D8CCA3;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.input-tareas {
+    background: transparent;
+    border: none;
+}
+
+.btn-add-task {
+    margin-left: 2px;
+    font-size: 100%;
+    color: #87805E;
+}
+
+.listado-pomodoro {
+    list-style: lower-roman;
+}
+
+.information-p {
+    color: #000;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 1px solid #000;
+}
+
+.footer-item-container {
+    display: flex;
+}
+
+.footer-item {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.footer-a {
+    color: #000;
+    text-decoration: none;
+}
+
+.footer-a:hover {
+    color: #000;
+}
+
+.footer-icons-container {
+    margin-bottom: 10px;
+}
+
+.footer-icons {
+    margin: 5px;
+    font-size: 20px;
+}
+
+.personal-information-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.personal-information {
+    margin-bottom: 1rem;
+}
+
+.personal-information-name {
+    color: #000;
+    font-weight: bold;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.personal-information-name:hover {
+    color: #000;
 }

@@ -4,9 +4,11 @@
 
 let repeater, timer, inputs, seconds, minutes, alarm;
 
-let pomodoro, shortBreak, longBreak;
 window.addEventListener(`load`, () => {
-    inputs = Array.from(document.getElementsByClassName(`number`));
+    inputs = {
+        minutes,
+        seconds
+    };
     timer = document.querySelector(`.timer`);
     alarm = new Audio(`sound/short-alarm-clock-sound.mp3`);
 });
@@ -18,9 +20,11 @@ function starTimer() {
 }
 
 function parseTime() {
-    minutes = Number(inputs[0].value);
-    seconds = Number(inputs[1].value);
+    minutes = 10;
+    seconds = 0;
 }
+
+
 
 function setTimer() {
     timer.innerHTML = `<p class="number">${
@@ -53,7 +57,7 @@ function runner() {
 
     setTimer();
 }
-
+// para solucionar lo de que no cambia de pomodor a short break podria crear un bucle for que cuando pase 4 veces el pomodoro se haga el long break
 function stopTimer() {
     location.reload()
 }
