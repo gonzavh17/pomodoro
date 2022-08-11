@@ -26,6 +26,42 @@ html {
     border-radius: 5px;
 }
 
+
+/* HEADER */
+
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.nav-items {
+    display: flex;
+}
+
+.nav-bar {
+    background-color: #D8CCA3 !important;
+}
+
+
+/* SECTION */
+
+
+/* SPOTIFY */
+
+.spotify {
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 5px 0 5px 0;
+}
+
+.section-spotify {
+    margin-left: 10px;
+    position: relative;
+}
+
+
+/* TIMER */
+
 .container {
     display: flex;
     flex-direction: column;
@@ -61,20 +97,7 @@ html {
     border-radius: 50%;
 }
 
-.navbar-collapse {
-    flex-grow: 0;
-}
-
-.nav-items {
-    display: flex;
-}
-
-.nav-bar {
-    background-color: #D8CCA3 !important;
-}
-
 .section {
-    margin-top: 2rem;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -103,29 +126,6 @@ html {
     font-size: 2rem;
 }
 
-.frases-container {
-    padding: 50px;
-    border: 1px solid #000;
-}
-
-.button-frase-container {
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.spotify {
-    display: flex;
-    justify-content: center;
-    margin-right: 10px;
-    padding: 5px 0 5px 0;
-}
-
-.section-spotify {
-    margin-left: 10px;
-    position: relative;
-}
-
 .btn-timer {
     background-color: #D8CCA3;
 }
@@ -136,9 +136,53 @@ html {
 }
 
 .timer-container {
-    margin-bottom: 10px;
+    margin: 2rem 0 10px 0;
     background-color: #EDDFB3;
 }
+
+
+/* LISTA DE TAREAS */
+
+
+/* FRASES */
+
+.frases-container {
+    padding: 50px;
+    color: #87805E;
+    background-color: rgba(237, 223, 179, 0.8);
+    border-radius: 5px;
+}
+
+#autor {
+    font-weight: bold;
+}
+
+.button-frase-container {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#button-nueva-frase {
+    padding: 3px;
+    border-radius: 10px;
+    transition: 200ms;
+    background-color: #EDDFB3;
+    color: #87805E;
+    border: none;
+}
+
+#button-nueva-frase:hover {
+    background-color: #87805E;
+    border: 1px solid #EDDFB3;
+    color: #EDDFB3;
+}
+
+
+/* SECTION-POMODORO */
+
+
+/* FOOTER */
 
 .buttons-container {
     display: flex;
@@ -148,6 +192,7 @@ html {
 .card-container {
     background-color: #EDDFB3;
     position: absolute;
+    margin-top: 2rem;
 }
 
 .section-pomodoro {
@@ -172,7 +217,7 @@ html {
 
 .lista-tareas {
     border-radius: 5px;
-    background-color: #EDDFB3;
+    background-color: rgba(237, 223, 179, 0.8);
     max-height: 300px;
     display: flex;
     flex-direction: column;
@@ -188,12 +233,12 @@ html {
 }
 
 .lista-tareas::-webkit-scrollbar-thumb {
-    background: #D8CCA3;
+    background-color: rgba(237, 223, 179, 1);
     border-radius: 5px;
 }
 
 .form {
-    background-color: #D8CCA3;
+    background-color: rgba(237, 223, 179, 1);
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
@@ -211,6 +256,15 @@ html {
     margin-left: 2px;
     font-size: 100%;
     color: #87805E;
+}
+
+.btn-delete {
+    background-color: #D8CCA3;
+}
+
+.btn-delete:hover {
+    background-color: #87805E;
+    border: none;
 }
 
 .listado-pomodoro {
@@ -276,3 +330,10 @@ html {
 .personal-information-name:hover {
     color: #000;
 }
+
+
+/* .btn-info {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+} */
