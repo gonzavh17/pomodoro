@@ -59,6 +59,10 @@ html {
     position: relative;
 }
 
+.card-footer-spotify {
+    color: #87805E;
+}
+
 
 /* TIMER */
 
@@ -128,6 +132,7 @@ html {
 
 .btn-timer {
     background-color: #D8CCA3;
+    color: #87805E;
 }
 
 .btn-timer:hover {
@@ -224,7 +229,7 @@ html {
     margin-bottom: 20px;
     overflow: scroll;
     width: 500px;
-    padding: 20px;
+    padding: 15px;
     align-items: center;
 }
 
@@ -234,6 +239,18 @@ html {
 
 .lista-tareas::-webkit-scrollbar-thumb {
     background-color: rgba(237, 223, 179, 1);
+    border-radius: 5px;
+}
+
+.card-task {
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.card-body-task {
+    max-width: 400px;
+    background-color: #EDDFB3;
+    border: none;
     border-radius: 5px;
 }
 
@@ -273,6 +290,10 @@ html {
 
 .information-p {
     color: #000;
+}
+
+.information-title {
+    font-weight: bold;
 }
 
 .footer {
