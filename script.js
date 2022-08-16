@@ -27,7 +27,7 @@ start.addEventListener(`click`, function() {
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000)
     } else {
-        swal(`timer is alredy running`)
+        swal(`El contador esta corriendo`)
     }
 })
 
