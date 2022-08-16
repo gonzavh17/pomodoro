@@ -80,6 +80,16 @@ html {
     align-items: center;
 }
 
+.pomodoro-timer {
+    display: flex;
+    flex-direction: row;
+}
+
+.dos-puntos {
+    display: flex;
+    align-items: center;
+}
+
 .number {
     display: inline-block;
     width: 200px;
@@ -90,7 +100,7 @@ html {
     background-color: transparent;
 }
 
-.buttons-start {
+.buttons {
     border: none;
     background-color: transparent;
     font-size: 2rem;
@@ -99,6 +109,11 @@ html {
     cursor: pointer;
     transition: 500ms;
     border-radius: 50%;
+}
+
+.btn-reset {
+    border: 1px solid #87805E;
+    font-size: 20px;
 }
 
 .section {
@@ -137,6 +152,7 @@ html {
 
 .btn-timer:hover {
     background-color: #87805E;
+    color: #000;
     border: none;
 }
 
@@ -145,49 +161,23 @@ html {
     background-color: #EDDFB3;
 }
 
-
-/* LISTA DE TAREAS */
-
-
-/* FRASES */
-
-.frases-container {
-    padding: 50px;
-    color: #87805E;
-    background-color: rgba(237, 223, 179, 0.8);
-    border-radius: 5px;
+.indicador-de-momento {
+    display: inline-block;
 }
 
-#autor {
-    font-weight: bold;
+#momento {
+    display: inline-block;
+    margin-left: 5px;
 }
 
-.button-frase-container {
-    margin: 10px;
-    display: flex;
-    justify-content: center;
+.indicador-de-intervalos {
+    display: inline-block;
 }
 
-#button-nueva-frase {
-    padding: 3px;
-    border-radius: 10px;
-    transition: 200ms;
-    background-color: #EDDFB3;
-    color: #87805E;
-    border: none;
+#intervalo {
+    display: inline-block;
+    margin-left: 5px;
 }
-
-#button-nueva-frase:hover {
-    background-color: #87805E;
-    border: 1px solid #EDDFB3;
-    color: #EDDFB3;
-}
-
-
-/* SECTION-POMODORO */
-
-
-/* FOOTER */
 
 .buttons-container {
     display: flex;
@@ -200,25 +190,8 @@ html {
     margin-top: 2rem;
 }
 
-.section-pomodoro {
-    background-color: #D8CCA3;
-    z-index: 20;
-    min-height: 100vh;
-    background-image: url(imagenes/background-section.WebP);
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.information-container {
-    width: 650px;
-    margin-top: 30px;
-}
-
-.h2-name {
-    padding: 10px;
-}
+/* LISTA DE TAREAS */
 
 .lista-tareas {
     border-radius: 5px;
@@ -284,17 +257,79 @@ html {
     border: none;
 }
 
+
+/* FRASES */
+
+.frases-container {
+    padding: 50px;
+    color: #87805E;
+    background-color: rgba(237, 223, 179, 0.8);
+    border-radius: 5px;
+}
+
+#autor {
+    font-weight: bold;
+}
+
+.button-frase-container {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#button-nueva-frase {
+    padding: 3px;
+    border-radius: 10px;
+    transition: 200ms;
+    background-color: #EDDFB3;
+    color: #87805E;
+    border: none;
+}
+
+#button-nueva-frase:hover {
+    background-color: #87805E;
+    border: 1px solid #EDDFB3;
+    color: #EDDFB3;
+}
+
+
+/* SECTION-POMODORO */
+
+.section-pomodoro {
+    background-color: #D8CCA3;
+    z-index: 20;
+    min-height: 100vh;
+    background-image: url(imagenes/background-section.WebP);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.information-container {
+    width: 650px;
+    margin-top: 30px;
+}
+
 .listado-pomodoro {
     list-style: lower-roman;
 }
 
 .information-p {
     color: #000;
+    font-size: 17px;
 }
 
 .information-title {
     font-weight: bold;
 }
+
+.h2-name {
+    padding: 10px;
+}
+
+
+/* FOOTER */
 
 .footer {
     display: flex;
@@ -353,8 +388,69 @@ html {
 }
 
 
-/* .btn-info {
-    color: #000;
-    text-decoration: none;
-    font-size: 20px;
-} */
+/* media querys */
+
+@media screen and (max-width: 1023px) {
+    .section-spotify {
+        display: none;
+    }
+    .timer-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .section-spotify {
+        display: none;
+    }
+    .timer-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+    }
+    .timer {
+        justify-content: center;
+    }
+    .number {
+        font-size: 50px;
+        width: 100px;
+    }
+    .buttons-container {
+        justify-content: center;
+    }
+    /* lista tareas */
+    .lista-tareas {
+        max-height: 300px;
+        width: 80%;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .inputs-container {
+        display: flex;
+        justify-content: center;
+    }
+    .input-tareas {
+        font-size: 10px;
+        width: 50px;
+    }
+    .form {
+        width: 80%;
+    }
+    /* frases */
+    .frases {
+        width: 80%;
+    }
+    /* section-pomodoro */
+    .section-pomodoro {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .information-container {
+        max-width: 90%;
+    }
+    .information-p {
+        font-size: 16px;
+    }
+}

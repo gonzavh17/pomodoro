@@ -2,123 +2,244 @@
 
 // Agregando el timer
 
-let repeater, timer, inputs, seconds, minutes, alarm;
+let start = document.getElementById(`play`);
+let stop = document.getElementById(`stop`);
+let reset = document.getElementById(`reset`);
 
-window.addEventListener(`load`, () => {
-    inputs = {
-        minutes,
-        seconds
-    };
-    timer = document.querySelector(`.timer`);
-    alarm = new Audio(`sound/short-alarm-clock-sound.mp3`);
-});
+let minutes = document.getElementById(`minutes`)
+let seconds = document.getElementById(`seconds`)
 
-function starTimer() {
-    parseTime();
-    setTimer();
-    countDown();
-}
+let pomodoro = document.getElementById(`btn-pomodoro`)
+let shortBreak = document.getElementById(`btn-short-break`)
+let longBreak = document.getElementById(`btn-long-break`)
 
-function parseTime() {
-    minutes = 10;
-    seconds = 0;
-}
+let momento = document.getElementById(`momento`);
+let intervalo = document.getElementById(`intervalo`)
+
+let alarm = new Audio(`sound/alarm.wav`);
+alarm.loop = false;
+
+let startTimer;
 
 
 
-function setTimer() {
-    timer.innerHTML = `<p class="number">${
-    minutes > 9 ? minutes : "0" + minutes
-  }</p><span>:</span><p class="number">${
-    seconds > 9 ? seconds : "0" + seconds
-  }</p>`;
-
-    document.title = `${minutes > 9 ? minutes : "0" + minutes}:${
-    seconds > 9 ? seconds : "0" + seconds
-  }`;
-}
-
-function countDown() {
-    repeater = setInterval(runner, 1000);
-}
-
-function runner() {
-    if (seconds > 0) {
-        seconds--;
+start.addEventListener(`click`, function() {
+    if (startTimer === undefined) {
+        startTimer = setInterval(timer, 1000)
     } else {
-        if (minutes > 0) {
-            seconds = 59;
-            minutes--;
-        } else {
-            alarm.play();
-            finishAlert();
-        }
+        swal(`timer is alredy running`)
+    }
+})
+
+pomodoro.addEventListener(`click`, function() {
+    minutes.innerText = 25;
+    seconds.innerText = "00";
+
+    momento.innerText = "pomodoro";
+
+    if (minutes.innerText == 0 && seconds.innerText == 0) {
+        finishAlert()
+    }
+})
+
+shortBreak.addEventListener(`click`, function() {
+    minutes.innerText = "05";
+    seconds.innerText = "00";
+
+    momento.innerText = "short break";
+})
+
+longBreak.addEventListener(`click`, function() {
+
+    minutes.innerText = 15;
+    seconds.innerText = "00";
+
+    momento.innerText = "long break";
+
+
+
+})
+
+// Reset
+reset.addEventListener(`click`, function() {
+    if (momento.innerText == "pomodoro") {
+        minutes.innerText = 25;
+        seconds.innerText = "00";
+
+        stopInterval()
+        startTimer = undefined;
+    } else if (momento.innerText == "short break") {
+        minutes.innerText = "05";
+        seconds.innerText = "00";
+
+        stopInterval()
+        startTimer = undefined;
+    } else if (momento.innerText == "long break") {
+        minutes.innerText = "15";
+        seconds.innerText = "00";
+
+        stopInterval()
+        startTimer = undefined;
     }
 
-    setTimer();
+
+
+})
+
+// Stop
+
+stop.addEventListener(`click`, function() {
+    stopInterval();
+    startTimer = undefined;
+})
+
+// Start
+
+function timer() {
+    // Pomodoro countdown
+    if (seconds.innerText != 0) {
+        seconds.innerText--;
+    } else if (minutes.innerText != 0 && seconds.innerText == 0) {
+        seconds.innerText = 59;
+        minutes.innerText--;
+    } else {
+        alarm.play();
+        finishAlert();
+
+
+    }
 }
-// para solucionar lo de que no cambia de pomodor a short break podria crear un bucle for que cuando pase 4 veces el pomodoro se haga el long break
-function stopTimer() {
-    location.reload()
+
+
+
+function stopInterval() {
+    clearInterval(startTimer);
 }
 
 function finishAlert() {
-    swal({
-        title: "¡Buen trabajo!",
-        text: "Terminaste un pomodoro",
-        icon: "success",
-        button: "Continuar",
-    }).then(() => {
-        stopTimer();
-    });
+    if (momento.innerText == "pomodoro" && intervalo.innerText < 4) {
+        swal({
+            title: "¡Buen trabajo!",
+            text: "Terminaste un pomodoro",
+            icon: "success",
+            button: "Continuar",
+        }).then(() => {
+            intervalo.innerHTML++;
+
+            momento.innerText = "short break"
+
+            minutes.innerText = "05";
+            seconds.innerText = "00";
+
+            stopInterval();
+            startTimer = undefined;
+        })
+    } else if (momento.innerText == "pomodoro" && intervalo.innerText == 4) {
+        swal({
+            title: "¡Buen trabajo, terminaste 4 pomdoros!",
+            text: "¡Hora del long break!",
+            icon: "success",
+            button: "Continuar",
+        }).then(() => {
+            momento.innerText = "long break"
+
+            minutes.innerText = "15";
+            seconds.innerText = "00";
+
+            stopInterval()
+            startTimer = undefined;
+
+            intervalo.innerText = 0;
+        })
+    } else if (momento.innerText == "short break") {
+        swal({
+            title: "¡Short break terminado!",
+            text: "Volvamos al trabajo!",
+            icon: "success",
+            button: "Continuar",
+        }).then(() => {
+            momento.innerText = "pomodoro"
+
+            minutes.innerText = "25";
+            seconds.innerText = "00";
+
+            stopInterval();
+            startTimer = undefined;
+        })
+
+    } else if (momento.innerText == "long break") {
+        swal({
+            title: "¡Long break terminado!",
+            text: "Hora de la vuelta al trabajo",
+            icon: "success",
+            button: "Continuar",
+        }).then(() => {
+            momento.innerText = "pomodoro";
+
+            minutes.innerText = "25";
+            seconds.innerText = "00";
+
+            stopInterval()
+            startTimer = undefined;
+
+            intervalo.innerText = 0;
+        })
+    }
 }
+
+
+
+
+
+
+
 
 // Creando funcion para guardar tareas dentro del local storage
 
-document.getElementById('formTask').addEventListener('submit', saveTask);
+document.getElementById("formTask").addEventListener("submit", saveTask);
 
 function saveTask(e) {
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('description').value;
-    console.log(description)
+    let title = document.getElementById("title").value;
+    let description = document.getElementById("description").value;
+    console.log(description);
 
     let task = {
         title,
-        description
+        description,
     };
 
-    if (localStorage.getItem('tasks') === null) {
+    if (localStorage.getItem("tasks") === null) {
         let tasks = [];
         tasks.push(task);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     } else {
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
+        let tasks = JSON.parse(localStorage.getItem("tasks"));
         tasks.push(task);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
     getTasks();
-    document.getElementById('formTask').reset();
+    document.getElementById("formTask").reset();
     e.preventDefault();
 }
 
 function deleteTask(title) {
-    console.log(title)
-    let tasks = JSON.parse(localStorage.getItem('tasks'));
+    console.log(title);
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].title == title) {
             tasks.splice(i, 1);
         }
     }
 
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     getTasks();
 }
 
 function getTasks() {
-    let tasks = JSON.parse(localStorage.getItem('tasks'));
-    let tasksView = document.getElementById('tasks');
-    tasksView.innerHTML = '';
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let tasksView = document.getElementById("tasks");
+    tasksView.innerHTML = "";
     for (let i = 0; i < tasks.length; i++) {
         let title = tasks[i].title;
         let description = tasks[i].description;
@@ -141,9 +262,14 @@ const frase = document.querySelector("#frase");
 const autor = document.querySelector("#autor");
 const buttonNuevaFrase = document.querySelector("#button-nueva-frase");
 
+
+
 buttonNuevaFrase.addEventListener("click", getFrase);
 
+
+
 function getFrase() {
+
     let num = parseInt(Math.random() * 10);
     console.log(num);
 

@@ -16,31 +16,31 @@
 </head>
 
 <body class="body">
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light nav-bar">
-            <div class="container-fluid nav-bar-container">
-                <a class="navbar-brand" href="#">Pomodoro</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                <div class="collapse navbar-collapse nav-items" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
-                        </li>
-                    </ul>
+    <header class="header">
+        <div class="nav-container">
+            <nav class="navbar navbar-expand-lg bg-light nav-bar">
+                <div class="container-fluid nav-bar-container">
+                    <a class="navbar-brand" href="#">Pomodoro</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                    <div class="collapse navbar-collapse nav-items" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#sec2">Como usar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contacto</a>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
     <main>
         <section>
@@ -64,33 +64,41 @@
                     <div class="row">
                         <div class="col">
                             <div class="timer">
-                                <input class="number" type="text" maxlength="2">
-                                <span>:</span>
-                                <input class="number" type="text" maxlength="2">
-
-
+                                <div class="pomodoro-timer">
+                                    <p class="number" id="minutes">25</p>
+                                    <p class="dos-puntos">:</p>
+                                    <p class="number" id="seconds">00</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col buttons-container">
                             <div class="buttons">
-                                <button class="buttons-start" id="play" onclick="starTimer()"><span class="jam jam-play"></span></button>
-                                <button class="buttons-start" id="stop" onclick="stopTimer()"><span class="jam jam-pause"></span></button>
+                                <button class="buttons btn-start" id="play"><span class="jam jam-play"></span></button>
+                                <button class="buttons btn-stop" id="stop"><span class="jam jam-pause"></span></button>
+                                <button class="buttons btn-reset" id="reset">reset</button>
+
+
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="buttons">
-                            <a href="#" class="btn btn-timer">Pomodoro</a>
-                            <a href="#" class="btn btn-timer">Short Break</a>
-                            <a href="#" class="btn btn-timer">long Break</a>
+                            <a href="#" class="btn btn-timer" id="btn-pomodoro">Pomodoro</a>
+                            <a href="#" class="btn btn-timer" id="btn-short-break">Short Break</a>
+                            <a href="#" class="btn btn-timer" id="btn-long-break">long Break</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-footer text-muted">
-                    2 days ago
+                    <p class="indicador-de-momento">Actualmente estas en:
+                        <p id="momento">pomodoro</p>
+                    </p>
+                    <p class="indicador-de-intervalos">Intervalos completados:
+                        <p id="intervalo">0</p>
+                    </p>
                 </div>
             </div>
 
@@ -114,7 +122,7 @@
 
             </div>
 
-            <div>
+            <div class="frases">
                 <div class="frases-container">
                     <p id="frase">"Con autodisciplina casi todo es posible"</p>
                     <p id="autor">-Theodore Roosevelt</p>
@@ -130,14 +138,13 @@
         <section class="section-pomodoro" id="sec2">
             <div class="information-container">
                 <h4 class="information-title">¿Que es la tecnica Pomodoro?</h4>
-                <p class="information-p">La técnica pomodoro es un método dedicado a la optimización del tiempo utilizado para realizar cierta actividad. Fue creado a fines de la década de 1980 por Francesco Cirillo. Se basa en un temporizador para dividir el tiempo en intervalos
-                    fijos llamados pomodoros de 25 minutos de actividad, seguidos de 5 minutos de descanso (short break), con pausas largas cada cuatro intervalos de pomodoros (Long break).
-                </p>
+                <p class="information-p">La técnica pomodoro es un método dedicado a la optimización del tiempo. Fue creado a fines de la década de 1980 por Francesco Cirillo. Se basa en un temporizador para dividir el tiempo en intervalos fijos llamados pomodoros de 25 minutos
+                    de actividad, seguidos de 5 minutos de descanso (short break), con pausas largas cada cuatro intervalos de pomodoros 14 minutos (Long break).</p>
 
                 <h4 class="information-title">¿Con que cuenta este sitio web?</h4>
-                <p class="information-p">Este sitio web cuenta con el temporizador pomodoro para que usted decida qué actividad va a realizar en el tiempo propuesto. Además de esto cuenta con un administrador de tareas a modo de lista para que agregue las actividades que desea
-                    hacer en el tiempo dispuesto, para lograr una optimización aún mayor de su tiempo. También cuenta con una playlist de spotify adherida al sitio la cual tiene música relajante para que ayude a su concentración durante el tiempo de pomodoro.
-                </p>
+                <p class="information-p">Este sitio web cuenta con el temporizador pomodoro, con sus respectivos usos (pomodoro, short break, long break). Además de esto cuenta con un administrador de tareas a modo de lista para que agregue las actividades que desea hacer en
+                    el tiempo dispuesto, para lograr una optimización aún mayor. También cuenta con una playlist de spotify adherida al sitio la cual tiene música relajante para que ayude durante su tiempo de concentración. También cuenta con un apartado
+                    de frases célebres para la automotivación.</p>
                 <h4 class="information-title">¿Como utilizarlo?</h4>
                 <p class="information-p">
                     <ol>
@@ -150,7 +157,7 @@
                         <li class="listado-pomodoro">Repetir los pasos.</li>
                     </ol>
                 </p>
-                <h4 class="information-title">Información adicional</h4>
+                <h4 class="information-title">Beneficios</h4>
                 <p class="information-p">El método se basa en la idea de que las pausas regulares pueden mejorar la agilidad mental, y nos motiva a ofrecer una respuesta eficiente frente al tiempo, en lugar del estado de ansiedad que suele provocar el no tener un tiempo predispuesto
                     para alguna actividad. Además, al prevenir la multitarea, ayuda a alcanzar un estado de foco más elevado, que se hace sostenible gracias a las pausas regulares.
                 </p>
