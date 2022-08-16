@@ -163,20 +163,24 @@ html {
 
 .indicador-de-momento {
     display: inline-block;
+    color: #87805E;
 }
 
 #momento {
     display: inline-block;
     margin-left: 5px;
+    color: #87805E;
 }
 
 .indicador-de-intervalos {
     display: inline-block;
+    color: #87805E;
 }
 
 #intervalo {
     display: inline-block;
     margin-left: 5px;
+    color: #87805E;
 }
 
 .buttons-container {
