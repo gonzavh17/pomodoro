@@ -106,15 +106,10 @@ html {
     font-size: 2rem;
     padding: 5px;
     color: #87805E;
-    cursor: pointer;
-    transition: 500ms;
-    border-radius: 50%;
+    cursor: default;
 }
 
-.btn-reset {
-    border: 1px solid #87805E;
-    font-size: 20px;
-}
+
 
 .section {
     display: flex;
@@ -143,6 +138,15 @@ html {
 .timer__container--segundos {
     padding: 1rem;
     font-size: 2rem;
+}
+
+.btn-start{
+    cursor: pointer;
+}
+
+
+.btn-start:active{
+    transform:translateY(5px);
 }
 
 .btn-timer {
@@ -439,9 +443,6 @@ html {
         font-size: 10px;
         width: 50px;
     }
-    .form {
-        width: 80%;
-    }
     /* frases */
     .frases {
         width: 80%;
@@ -458,3 +459,5 @@ html {
         font-size: 16px;
     }
 }
+
+
